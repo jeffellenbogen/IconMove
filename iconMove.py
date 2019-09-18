@@ -286,6 +286,7 @@ matrix_rows = 32
 matrix_columns = 32
 num_horiz = 5
 num_vert = 3
+current_dir = "up"
 
 #create an instance of the Tank class and set it to a specific background image
 forest_tank = Tank(matrix_rows, matrix_columns, num_horiz, num_vert)
