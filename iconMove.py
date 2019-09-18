@@ -330,7 +330,8 @@ try:
     last_update_time = current_time
 
     time.sleep(.02)
-
+except KeyboardInterrupt:
+  exit(0)
 
 
 
