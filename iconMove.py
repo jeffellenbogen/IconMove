@@ -124,6 +124,8 @@ class Icon():
   #     random y.  
   ###############################################
   def move(self):
+    global current_dir
+    
     if current_dir == "up":
       self.y = self.y + 1
     if current_dir == "left":
