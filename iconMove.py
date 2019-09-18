@@ -6,6 +6,8 @@ import time
 from rgbmatrix import RGBMatrix, RGBMatrixOptions
 from PIL import Image, ImageDraw, ImageFont
 
+from usb_gamepad import gamepad_read_blocking,gamepad_read_nonblocking 
+
 ###################################
 # icon class 
 #
@@ -122,6 +124,15 @@ class Icon():
   #     random y.  
   ###############################################
   def move(self):
+    if current_dir == "up":
+      self.y = self.y + 1
+    if current_dir == "left":
+      self.x = self.x - 1
+    if current_dir == "right":
+      self.x = self.x + 1
+    if current_dir == "down":
+      self.y = self.y - 1
+    '''
     if self.onScreen == False:
       self.checkTimeout()
       ## this else block allows different icons to move at a slower rate based on the .slowdown value
@@ -152,6 +163,7 @@ class Icon():
       self.x = self.x + self.direction
       # increment movecount for slowing down movement if a value is set for .setSlowdown
       self.movecount = 1
+      '''
 
 ###################################
 #  Tank class
@@ -243,6 +255,7 @@ class Tank():
     edge_offset_y = 13
     text_spacing = 4
     
+    '''
     #draw the text on screen
     screen_draw.text((edge_offset_x,self.total_rows - edge_offset_y * 2),time_string, fill = (255,255,255), font = fnt2)
     screen_draw.text((edge_offset_x, self.total_rows - edge_offset_y),day_of_week, fill = (255,255,255), font = fnt)
@@ -259,6 +272,7 @@ class Tank():
     screen_draw.text(((self.total_columns - specialMessage1_size[0]) /2,13),specialMessage1, fill = (255,200,255), font = fnt3)
     screen_draw.text(((self.total_columns - specialMessage2_size[0]) /2,30),specialMessage2, fill = (255,150,200), font = fnt4)
     #screen_draw.text(((self.total_columns - specialMessage3_size[0]) /2,50),specialMessage3, fill = (255,255,255), font = fnt5)
+    '''
 
     #write all changes to the screen
     self.matrix.SetImage(self.screen,0,0)
@@ -272,68 +286,23 @@ num_horiz = 5
 num_vert = 3
 
 #create an instance of the Tank class and set it to a specific background image
-fish_tank = Tank(matrix_rows, matrix_columns, num_horiz, num_vert)
-tankChooser = random.randint(1,4)
-if tankChooser == 1:
-  fish_tank.set_background("images/tanks/reef_bgrd_dark_bottom.jpg")
-elif tankChooser == 2:
-  fish_tank.set_background("images/tanks/caribbean-coral-reef.jpg")
-elif tankChooser == 3:
-  fish_tank.set_background("images/tanks/coral_tank.jpg")
-else:
-  fish_tank.set_background("images/tanks/starfish_on_rock.jpg")
+forest_tank = Tank(matrix_rows, matrix_columns, num_horiz, num_vert)
+forest_tank.set_background("images/forest_tank.png")
 
 #create as many instances of the Icon class as needed
-clownfish = Icon("images/icons/clownfish.jpg",(0,10),(150,255),(0,10),40,25,2,fish_tank.total_columns,fish_tank.total_rows)
-clownfish2 = Icon("images/icons/clownfish.jpg",(0,10),(200,255),(0,10),32,20,5,fish_tank.total_columns,fish_tank.total_rows)
-clownfish3 = Icon("images/icons/clownfish.jpg",(0,10),(200,255),(0,10),16,10,0,fish_tank.total_columns,fish_tank.total_rows)
-dory = Icon("images/icons/dory.jpg",(0,10),(150,255),(0,10),28,20,20,fish_tank.total_columns,fish_tank.total_rows)
-seaTurtle = Icon("images/icons/seaTurtle.jpg",(0,10),(0,10),(150,255),80,50,30,fish_tank.total_columns,fish_tank.total_rows)
-seahorse = Icon("images/icons/seahorse_red.png",(0,100),(100,255),(0,100),24,32,15,fish_tank.total_columns,fish_tank.total_rows)
-parrotfish = Icon("images/icons/parrotfish.jpg",(0,100),(100,255),(0,100),25,15,10,fish_tank.total_columns,fish_tank.total_rows)
-redBloodParrot = Icon("images/icons/red-blood-parrot.jpg",(0,100),(100,255),(0,100),25,18,5,fish_tank.total_columns,fish_tank.total_rows)
-
+owl = Icon("images/icons/bird1.png",(250,255),(250,255),(250,255),20,20,0,fish_tank.total_columns,fish_tank.total_rows)
 
 #set the slowdown rate via the .setSlowdown method of the Icon class
-clownfish.setSlowdown(random.randint(0,2))
-clownfish2.setSlowdown(random.randint(0,4))
-clownfish3.setSlowdown(0)
-seahorse.setSlowdown(random.randint(0,4))
-seaTurtle.setSlowdown(random.randint(0,2))
-dory.setSlowdown(random.randint(0,3))
+#clownfish.setSlowdown(random.randint(0,2))
 
 #add each of the icon instances to the tank, the order these are added determines their relationship
-# in the taknk from back to front. Last one added is closer to the front of the tank
-fish_tank.add_icon(seahorse)
-fish_tank.add_icon(clownfish)
-fish_tank.add_icon(dory)
-fish_tank.add_icon(seaTurtle)
-fish_tank.add_icon(clownfish2)
-fish_tank.add_icon(parrotfish)
-fish_tank.add_icon(redBloodParrot)
-fish_tank.add_icon(clownfish3)
+# in the tank from back to front. Last one added is closer to the front of the tank
+forest_tank.add_icon(owl)
 
 try:
   print("Press CTRL-C to stop")
   while True:
-    fish_tank.show()
-    #the parameter below in time.sleep controls the overall rate of the whole tank and speed of
-    #   icons with no slowdown
-    time.sleep(.02)
-except KeyboardInterrupt:
-  exit(0)
-
-
-
-# player starts going up 
-  current_dir = "up"
-
-  print "use gamepad to move worm" 
- 
-  last_update_time = datetime.now()
-  
-
-  while True:
+    forest_tank.show()
 
     dir_pressed = False
     current_time = datetime.now()
@@ -359,11 +328,10 @@ except KeyboardInterrupt:
       continue 
  
     last_update_time = current_time
+
+    time.sleep(.02)
+
+
+
+
     
-    if current_dir == "up":
-
-    if current_dir == "left":
-
-    if current_dir == "right":
-
-    if current_dir == "down":
