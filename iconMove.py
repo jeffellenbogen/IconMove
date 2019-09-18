@@ -124,15 +124,15 @@ class Icon():
   #     random y.  
   ###############################################
   def move(self):
-    global key
+    global current_dir
 
-    if key == "up":
+    if current_dir == "up":
       self.y = self.y + 1
-    if key == "left":
+    if current_dir == "left":
       self.x = self.x - 1
-    if key == "right":
+    if current_dir == "right":
       self.x = self.x + 1
-    if key == "down":
+    if current_dir == "down":
       self.y = self.y - 1
     '''
     if self.onScreen == False:
