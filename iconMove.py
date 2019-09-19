@@ -40,8 +40,8 @@ class Icon():
     self.total_rows = total_rows
     self.total_columns = total_columns
 
-    self.x = total_columns
-    self.y = random.randint(0,total_rows - y_size)
+    self.x = 50
+    self.y = 50
 
     self.x_size = x_size
     self.y_size = y_size
