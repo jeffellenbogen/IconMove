@@ -231,7 +231,7 @@ class Tank():
     ################################################
     # Date and time formatting and postioning
     ################################################
-    currentDT = datetime.datetime.now()
+    currentDT = datetime.now()
     time_string = currentDT.strftime("%H:%M:%S")
 
     #create various fonts
@@ -242,7 +242,7 @@ class Tank():
     fnt5 = ImageFont.truetype("Arial_Bold.ttf",8)
 
     #convert to selected timezone and format date/time info
-    currentDT = datetime.datetime.now(timezone('UTC'))
+    currentDT = datetime.now(timezone('UTC'))
     currentDT_TZadjusted = currentDT.astimezone(timezone('US/Mountain'))
     time_string = currentDT_TZadjusted.strftime("%I:%M:%S %p")
     day_of_week = currentDT_TZadjusted.strftime("%A")
