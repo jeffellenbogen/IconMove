@@ -1,4 +1,4 @@
-from datetime import datetime
+import datetime
 from pytz import timezone
 import random
 import time
@@ -312,7 +312,7 @@ try:
     deltaT = current_time - last_update_time
 
     key = gamepad_read_nonblocking()
-    
+
     if (key == "D-up") & (current_dir != "down"):
        current_dir = "up" 
        dir_pressed = True
