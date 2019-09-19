@@ -304,6 +304,9 @@ forest_tank.add_icon(owl)
 
 try:
   print("Press CTRL-C to stop")
+
+  last_update_time = datetime.now()
+  
   while True:
     forest_tank.show()
 
