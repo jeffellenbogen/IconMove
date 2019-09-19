@@ -9,7 +9,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 from usb_gamepad import gamepad_read_blocking,gamepad_read_nonblocking 
 
-speed_delay = .08
+speed_delay = .5
 ###################################
 # icon class 
 #
