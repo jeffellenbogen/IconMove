@@ -1,7 +1,8 @@
-import datetime
-from pytz import timezone
-import random
 import time
+from datetime import datetime
+
+
+import random
 
 from rgbmatrix import RGBMatrix, RGBMatrixOptions
 from PIL import Image, ImageDraw, ImageFont
@@ -306,7 +307,7 @@ try:
   print("Press CTRL-C to stop")
 
   last_update_time = datetime.now()
-  
+
   while True:
     forest_tank.show()
 
