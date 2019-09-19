@@ -228,54 +228,6 @@ class Tank():
     self.screen = self.screen.convert("RGB")
     screen_draw = ImageDraw.Draw(self.screen)
 
-    ################################################
-    # Date and time formatting and postioning
-    ################################################
-    currentDT = datetime.now()
-    time_string = currentDT.strftime("%H:%M:%S")
-
-    #create various fonts
-    fnt = ImageFont.truetype("Arial_Bold.ttf",10)
-    fnt2 = ImageFont.truetype("Arial_Bold.ttf",12)
-    fnt3 = ImageFont.truetype("Arial_Bold.ttf",16)
-    fnt4 = ImageFont.truetype("Arial_Bold.ttf",19)
-    fnt5 = ImageFont.truetype("Arial_Bold.ttf",8)
-
-    #convert to selected timezone and format date/time info
-    currentDT = datetime.now(timezone('UTC'))
-    currentDT_TZadjusted = currentDT.astimezone(timezone('US/Mountain'))
-    time_string = currentDT_TZadjusted.strftime("%I:%M:%S %p")
-    day_of_week = currentDT_TZadjusted.strftime("%A")
-    date_string = currentDT_TZadjusted.strftime("%B %d, %Y")
-    seconds = int(currentDT_TZadjusted.strftime("%S"))
-    
-    #determine size of the various text strings using .getsize so that we can center them
-    time_size = fnt2.getsize(time_string)
-    day_of_week_size = fnt.getsize(day_of_week)
-    date_string_size = fnt.getsize(date_string)
-
-    edge_offset_x = 3
-    edge_offset_y = 13
-    text_spacing = 4
-    
-    '''
-    #draw the text on screen
-    screen_draw.text((edge_offset_x,self.total_rows - edge_offset_y * 2),time_string, fill = (255,255,255), font = fnt2)
-    screen_draw.text((edge_offset_x, self.total_rows - edge_offset_y),day_of_week, fill = (255,255,255), font = fnt)
-    screen_draw.text((edge_offset_x + day_of_week_size[0] + text_spacing, self.total_rows - edge_offset_y),date_string, fill = (255,255,255), font = fnt)
-
-    #special messages here
-    specialMessage1 = ("Welcome to the")
-    specialMessage2 = ("C.R.E.A.T.E. LAB")
-    #specialMessage3 = ("The Center for Engineering Artistry and Technological Expression")
-    specialMessage1_size = fnt3.getsize(specialMessage1)
-    specialMessage2_size = fnt4.getsize(specialMessage2)
-    #specialMessage3_size = fnt5.getsize(specialMessage3)
-
-    screen_draw.text(((self.total_columns - specialMessage1_size[0]) /2,13),specialMessage1, fill = (255,200,255), font = fnt3)
-    screen_draw.text(((self.total_columns - specialMessage2_size[0]) /2,30),specialMessage2, fill = (255,150,200), font = fnt4)
-    #screen_draw.text(((self.total_columns - specialMessage3_size[0]) /2,50),specialMessage3, fill = (255,255,255), font = fnt5)
-    '''
 
     #write all changes to the screen
     self.matrix.SetImage(self.screen,0,0)
