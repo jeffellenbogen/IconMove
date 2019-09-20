@@ -248,7 +248,7 @@ forest_tank = Tank(matrix_rows, matrix_columns, num_horiz, num_vert)
 forest_tank.set_background("images/forest_tank.png")
 
 #create as many instances of the Icon class as needed
-owl = Icon("images/bird1.png",(250,255),(250,255),(250,255),20,20,0,forest_tank.total_columns,forest_tank.total_rows)
+owl = Icon("images/bird1.png",(0,10),(240,255),(0,10),20,20,0,forest_tank.total_columns,forest_tank.total_rows)
 
 #set the slowdown rate via the .setSlowdown method of the Icon class
 #clownfish.setSlowdown(random.randint(0,2))
