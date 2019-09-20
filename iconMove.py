@@ -290,7 +290,9 @@ try:
 
     # Should probably use positive logic here to update the current direction, 
     # but instead, I'm using the continue construct.
-    if ((deltaT.total_seconds() < speed_delay) '''& (dir_pressed == False))''':
+    
+    #if ((deltaT.total_seconds() < speed_delay) & (dir_pressed == False)):
+    if (deltaT.total_seconds() < speed_delay) :  
       continue 
  
     last_update_time = current_time
