@@ -136,6 +136,7 @@ class Icon():
       self.x = self.x + 1
     if current_dir == "down":
       self.y = self.y - 1
+
     '''
     if self.onScreen == False:
       self.checkTimeout()
@@ -260,6 +261,7 @@ try:
   print("Press CTRL-C to stop")
 
   last_update_time = datetime.now()
+  current_dir = "stop"
 
   while True:
     forest_tank.show()
@@ -270,18 +272,21 @@ try:
 
     key = gamepad_read_nonblocking()
 
-    if (key == "D-up") & (current_dir != "down"):
+    if (key == "D-up"):
        current_dir = "up" 
        dir_pressed = True
-    if (key == "D-down") & (current_dir != "up"):
+    if (key == "D-down"):
        current_dir = "down" 
        dir_pressed = True
-    if (key == "D-left") & (current_dir != "right"):
+    if (key == "D-left"):
        current_dir = "left" 
        dir_pressed = True
-    if (key == "D-right") & (current_dir != "left"):
+    if (key == "D-right"):
        current_dir = "right" 
        dir_pressed = True
+    else:
+       current_dir = "stop"
+       dir_pressed = False
 
     # Should probably use positive logic here to update the current direction, 
     # but instead, I'm using the continue construct.
