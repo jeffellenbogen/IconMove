@@ -273,18 +273,23 @@ try:
     key = gamepad_read_nonblocking()
 
     if (key == "D-up"):
+       print ("UP")
        current_dir = "up" 
        dir_pressed = True
     if (key == "D-down"):
+       print ("DOWN")
        current_dir = "down" 
        dir_pressed = True
     if (key == "D-left"):
+       print ("LEFT")
        current_dir = "left" 
        dir_pressed = True
     if (key == "D-right"):
+       print ("RIGHT")
        current_dir = "right" 
        dir_pressed = True
     else:
+       print ("STOP")
        current_dir = "stop"
        dir_pressed = False
 
