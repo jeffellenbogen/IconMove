@@ -276,15 +276,15 @@ try:
        print ("UP")
        current_dir = "up" 
        dir_pressed = True
-    if (key == "D-down"):
+    elif (key == "D-down"):
        print ("DOWN")
        current_dir = "down" 
        dir_pressed = True
-    if (key == "D-left"):
+    elif (key == "D-left"):
        print ("LEFT")
        current_dir = "left" 
        dir_pressed = True
-    if (key == "D-right"):
+    elif (key == "D-right"):
        print ("RIGHT")
        current_dir = "right" 
        dir_pressed = True
@@ -296,8 +296,8 @@ try:
     # Should probably use positive logic here to update the current direction, 
     # but instead, I'm using the continue construct.
 
-    #if ((deltaT.total_seconds() < speed_delay) & (dir_pressed == False)):
-    if (deltaT.total_seconds() < speed_delay) :  
+    if ((deltaT.total_seconds() < speed_delay) & (dir_pressed == False)):
+    #if (deltaT.total_seconds() < speed_delay) :  
       continue 
  
     last_update_time = current_time
