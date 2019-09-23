@@ -129,13 +129,13 @@ class Icon():
     global current_dir
 
     if current_dir == "up":
-      self.y = self.y + 1
+      self.y = self.y - 1
     if current_dir == "left":
       self.x = self.x - 1
     if current_dir == "right":
       self.x = self.x + 1
     if current_dir == "down":
-      self.y = self.y - 1
+      self.y = self.y + 1
 
     '''
     if self.onScreen == False:
@@ -289,7 +289,6 @@ try:
        current_dir = "right" 
        dir_pressed = True
     else:
-       print ("STOP")
        current_dir = "stop"
        dir_pressed = False
 
